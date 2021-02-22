@@ -7,6 +7,7 @@
 
 #include <NV21TextureMapSample.h>
 #include <TriangleSample.h>
+#include <TextureMapSample.h>
 
 MyGLRenderContext* MyGLRenderContext::m_pContext = nullptr;
 
@@ -83,16 +84,18 @@ void MyGLRenderContext::SetImageDataWithIndex(int index, int format, int width, 
 void MyGLRenderContext::SetParamsInt(int paramType, int value0, int value1) {
     LOGCATE("MyGLRenderContext::SetParamsInt paramType = %d, value0 = %d, value1 = %d", paramType, value0, value1);
 
-    if (paramType == SAMPLE_TYPE)
-    {
+    if (paramType == SAMPLE_TYPE) {
         m_pBeforeSample = m_pCurSample;
 
         LOGCATE("MyGLRenderContext::SetParamsInt 0 m_pBeforeSample = %p", m_pBeforeSample);
 
-        switch (value0)
-        {
+        switch (value0) {
             case SAMPLE_TYPE_KEY_TRIANGLE:
                 m_pCurSample = new TriangleSample();
+                break;
+
+            case SAMPLE_TYPE_KEY_TEXTURE_MAP:
+                m_pCurSample = new TextureMapSample();
                 break;
             default:
                 m_pCurSample = nullptr;
@@ -147,12 +150,11 @@ void MyGLRenderContext::OnSurfaceChanged(int width, int height) {
 
 void MyGLRenderContext::OnDrawFrame() {
     LOGCATE("MyGLRenderContext::OnDrawFrame");
-    //glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     if (m_pBeforeSample)
     {
-        m_pBeforeSample->Destory();
+        m_pBeforeSample->Destroy();
         delete m_pBeforeSample;
         m_pBeforeSample = nullptr;
     }

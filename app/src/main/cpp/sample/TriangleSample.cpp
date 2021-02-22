@@ -64,7 +64,7 @@ void TriangleSample::Draw(int screenW, int screenH) {
     glUseProgram (GL_NONE);
 }
 
-void TriangleSample::Destory() {
+void TriangleSample::Destroy() {
     if(m_ProgramObj) {
         glDeleteProgram(m_ProgramObj);
         m_ProgramObj = GL_NONE;

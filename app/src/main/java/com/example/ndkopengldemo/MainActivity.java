@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final String[] SAMPLE_TITLES = {
             "DrawTriangle",
+            "TextureMap",
     };
 
     private MyGLSurfaceView mGLSurfaceView;
@@ -262,10 +263,10 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
                 switch (sampleType) {
                     case SAMPLE_TYPE_TRIANGLE:
                         break;
-                    /*case SAMPLE_TYPE_TEXTURE_MAP:
+                    case SAMPLE_TYPE_TEXTURE_MAP:
                         loadRGBAImage(R.drawable.dzzz);
                         break;
-                    case SAMPLE_TYPE_YUV_TEXTURE_MAP:
+                    /*case SAMPLE_TYPE_YUV_TEXTURE_MAP:
                         loadNV21Image();
                         break;
                     case SAMPLE_TYPE_VAO:
