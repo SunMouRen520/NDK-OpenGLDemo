@@ -16,8 +16,6 @@ public:
     }
 
     ~MySyncLock(void) {
-        //zpthread_mutex_destory(&m_mutex);
-        //zpthread_mutexattr_destory(&m_attr);
         pthread_mutex_destroy(&m_mutex);
         pthread_mutexattr_destroy(&m_attr);
     }

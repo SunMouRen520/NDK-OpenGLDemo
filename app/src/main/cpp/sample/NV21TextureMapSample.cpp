@@ -32,14 +32,14 @@ void NV21TextureMapSample::Init() {
             "layout(location = 0) out vec4 outColor;                \n"
             "uniform sampler2D y_texture;                           \n"
             "uniform sampler2D uv_texture;                          \n"
-            "void main {                                            \n"
+            "void main() {                                          \n"
             "   vec3 yuv;                                           \n"
             "   yuv.x = texture(y_texture, v_texCoord).r;           \n"
             "   yuv.y = texture(uv_texture, v_texCoord).a - 0.5;    \n"
             "   yuv.z = texture(uv_texture, v_texCoord).r - 0.5;    \n"
-            "   highp vec3 rgb = mat3{ 1,   1,  1,                  \n"
-            "                          0,   -0.344,     1.770       \n"
-            "                          1.403,   -0.714,  0} * yuv;  \n"
+            "   highp vec3 rgb = mat3( 1,   1,  1,                  \n"
+            "                          0,   -0.344,     1.770,      \n"
+            "                          1.403,   -0.714,  0) * yuv;  \n"
             "   outColor = vec4(rgb,1);                             \n"
             "}                                                      \n";
 
@@ -126,7 +126,7 @@ void NV21TextureMapSample::Draw(int screenW, int screenH) {
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, indices);
 }
 
-void NV21TextureMapSample::Destory() {
+void NV21TextureMapSample::Destroy() {
     if(m_ProgramObj) {
         glDeleteProgram(m_ProgramObj);
         glDeleteTextures(1, &m_yTextureId);

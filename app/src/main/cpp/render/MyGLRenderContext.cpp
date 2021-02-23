@@ -97,6 +97,9 @@ void MyGLRenderContext::SetParamsInt(int paramType, int value0, int value1) {
             case SAMPLE_TYPE_KEY_TEXTURE_MAP:
                 m_pCurSample = new TextureMapSample();
                 break;
+            case SAMPLE_TYPE_KEY_YUV_TEXTURE_MAP:
+                m_pCurSample = new NV21TextureMapSample();
+                break;
             default:
                 m_pCurSample = nullptr;
                 break;
@@ -150,6 +153,7 @@ void MyGLRenderContext::OnSurfaceChanged(int width, int height) {
 
 void MyGLRenderContext::OnDrawFrame() {
     LOGCATE("MyGLRenderContext::OnDrawFrame");
+    //glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     if (m_pBeforeSample)

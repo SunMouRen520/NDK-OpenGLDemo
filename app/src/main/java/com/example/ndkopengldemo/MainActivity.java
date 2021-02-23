@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
     private static final String[] SAMPLE_TITLES = {
             "DrawTriangle",
             "TextureMap",
+            "YUV Rendering",
     };
 
     private MyGLSurfaceView mGLSurfaceView;
@@ -266,10 +267,10 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
                     case SAMPLE_TYPE_TEXTURE_MAP:
                         loadRGBAImage(R.drawable.dzzz);
                         break;
-                    /*case SAMPLE_TYPE_YUV_TEXTURE_MAP:
+                    case SAMPLE_TYPE_YUV_TEXTURE_MAP:
                         loadNV21Image();
                         break;
-                    case SAMPLE_TYPE_VAO:
+                    /*case SAMPLE_TYPE_VAO:
                         break;
                     case SAMPLE_TYPE_FBO:
                         loadRGBAImage(R.drawable.java);

@@ -36,12 +36,12 @@ JNIEXPORT void JNICALL native_UnInit(JNIEnv *env, jobject instance) {
  *  Signature : (III[B)V
  */
 JNIEXPORT void JNICALL native_SetImageData(JNIEnv *env, jobject instance, jint format, jint width, jint height, jbyteArray imageData) {
-    int len = env->GetArrayLength(imageData);
+    int len = env->GetArrayLength (imageData);
     uint8_t * buf = new uint8_t[len];
     env->GetByteArrayRegion(imageData, 0, len, reinterpret_cast<jbyte*>(buf));
     MyGLRenderContext::GetInstance()->SetImageData(format, width, height, buf);
     delete [] buf;
-    env->DeleteGlobalRef(imageData);
+    env->DeleteLocalRef(imageData);
 }
 
 /*
@@ -178,7 +178,7 @@ JNIEXPORT void JNICALL native_BgRenderUnInit(JNIEnv *env, jobject instance) {
 }
 
 #ifdef _cplusplus
-};
+}
 #endif
 
 static JNINativeMethod g_RenderMethods[] = {

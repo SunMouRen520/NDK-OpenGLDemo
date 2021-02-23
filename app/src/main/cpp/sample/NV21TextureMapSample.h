@@ -28,7 +28,7 @@ public:
 
     virtual void Draw(int screenW, int screenH);
 
-    virtual void Destory();
+    virtual void Destroy();
 
 private:
     GLuint m_yTextureId;
